@@ -16,7 +16,7 @@ const Navbar = () => {
   useEffect(() => {
     const fetchAnnouncementCount = async () => {
       try {
-        const response = await axios.get("https://foruma-server-site.vercel.app/announcements/count");
+        const response = await axios.get("http://localhost:3000/announcements/count");
         setAnnouncementCount(response.data.count);
       } catch (error) {
         console.error("Failed to fetch announcement count", error);
@@ -86,6 +86,21 @@ const Navbar = () => {
               Membership
             </NavLink>
           </li>
+          {/* Show only if user is logged in */}
+        {user && (
+          <>
+            <li>
+              <NavLink to="/announcement" className="font-medium hover:text-primary">
+                Announcement
+              </NavLink>
+            </li>
+            <li>
+              <NavLink to="/discussion" className="font-medium hover:text-primary">
+                Discussion
+              </NavLink>
+            </li>
+          </>
+        )}
         </ul>
 
         {/* Notification Bell (Static UI) */}

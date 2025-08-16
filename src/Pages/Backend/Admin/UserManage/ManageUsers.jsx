@@ -9,14 +9,14 @@ const ManageUsers = () => {
 
   // Fetch all users
   useEffect(() => {
-    axios.get("https://foruma-server-site.vercel.app/adduser")
+    axios.get("http://localhost:3000/adduser")
       .then(res => setUsers(res.data))
       .catch(err => console.error("Error fetching users:", err));
   }, []);
 
   // Fetch all memberships
   useEffect(() => {
-    axios.get("https://foruma-server-site.vercel.app/allmembers")
+    axios.get("http://localhost:3000/allmembers")
       .then(res => setMemberships(res.data))
       .catch(err => console.error("Error fetching memberships:", err));
   }, []);
@@ -35,7 +35,7 @@ const ManageUsers = () => {
   // Handle make admin button click
   const handleMakeAdmin = async (userId) => {
     try {
-      const response = await axios.patch(`https://foruma-server-site.vercel.app/adduser/${userId}`, {
+      const response = await axios.patch(`http://localhost:3000/adduser/${userId}`, {
         role: "admin"
       });
 

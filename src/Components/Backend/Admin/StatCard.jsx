@@ -16,9 +16,9 @@ const StatCard = () => {
     const fetchStats = async () => {
       try {
         const [postsRes, commentsRes, usersRes] = await Promise.all([
-          axios.get("https://foruma-server-site.vercel.app/posts"),
-          axios.get("https://foruma-server-site.vercel.app/allcomments"),
-          axios.get("https://foruma-server-site.vercel.app/adduser"),
+          axios.get("http://localhost:3000/posts"),
+          axios.get("http://localhost:3000/allcomments"),
+          axios.get("http://localhost:3000/adduser"),
         ]);
 
         const users = usersRes.data || [];

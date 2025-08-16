@@ -15,7 +15,7 @@ const AddPost = () => {
 
   // Fetch tags
   useEffect(() => {
-    fetch("https://foruma-server-site.vercel.app/tags")
+    fetch("http://localhost:3000/tags")
       .then((res) => res.json())
       .then((data) => {
         setTags(data);
@@ -36,8 +36,8 @@ const AddPost = () => {
     const fetchData = async () => {
       try {
         const [membersRes, postsRes] = await Promise.all([
-          fetch("https://foruma-server-site.vercel.app/allmembers"),
-          fetch(`https://foruma-server-site.vercel.app/posts/count?authorEmail=${encodeURIComponent(user.email)}`)
+          fetch("http://localhost:3000/allmembers"),
+          fetch(`http://localhost:3000/posts/count?authorEmail=${encodeURIComponent(user.email)}`)
         ]);
 
         const [members, postData] = await Promise.all([membersRes.json(), postsRes.json()]);
@@ -89,7 +89,7 @@ const AddPost = () => {
     }
 
     try {
-      const response = await fetch("https://foruma-server-site.vercel.app/addpost", {
+      const response = await fetch("http://localhost:3000/addpost", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(postData),

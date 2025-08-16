@@ -22,7 +22,7 @@ const CreateAnnouncement = () => {
 
     try {
       const token = await user.getIdToken();
-      await axios.post("https://foruma-server-site.vercel.app/api/announcements", announcement, {
+      await axios.post("http://localhost:3000/api/announcements", announcement, {
         headers: {
           Authorization: `Bearer ${token}`,
         },

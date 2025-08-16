@@ -19,7 +19,7 @@ const Membership = () => {
   useEffect(() => {
     const checkMembership = async () => {
       try {
-        const res = await axios.get("https://foruma-server-site.vercel.app/allmembers");
+        const res = await axios.get("http://localhost:3000/allmembers");
         const found = res.data.find((member) => member.email === user?.email);
         if (found && found.status === 1) {
           setIsMember(true);
@@ -43,13 +43,13 @@ const Membership = () => {
       await new Promise((resolve) => setTimeout(resolve, 2000));
 
       // 1. Update member status
-      await axios.patch("https://foruma-server-site.vercel.app/members/update", {
+      await axios.patch("http://localhost:3000/members/update", {
         email: user.email,
         status: 1,
       });
 
       // 2. Save to history
-      await axios.post("https://foruma-server-site.vercel.app/payment-history", {
+      await axios.post("http://localhost:3000/payment-history", {
         email: user.email,
         name: user.displayName,
         amount: 500,

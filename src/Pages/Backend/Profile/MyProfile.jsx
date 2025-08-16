@@ -22,7 +22,7 @@ const MyProfile = () => {
 
       const token = await currentUser.getIdToken();
 
-      const res = await axios.get("https://foruma-server-site.vercel.app/api/membership-status", {
+      const res = await axios.get("http://localhost:3000/api/membership-status", {
         headers: {
           Authorization: `Bearer ${token}`,
         },
@@ -50,7 +50,7 @@ const MyProfile = () => {
 
       const token = await currentUser.getIdToken();
 
-      const res = await axios.get("https://foruma-server-site.vercel.app/mypost", {
+      const res = await axios.get("http://localhost:3000/mypost", {
         headers: {
           Authorization: `Bearer ${token}`,
         },

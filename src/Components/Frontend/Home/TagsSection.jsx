@@ -7,7 +7,7 @@ const TagsSection = ({ onTagClick }) => {
   useEffect(() => {
     const fetchTags = async () => {
       try {
-        const res = await fetch('https://foruma-server-site.vercel.app/tags');
+        const res = await fetch('http://localhost:3000/tags');
         const data = await res.json();
 
         if (Array.isArray(data)) {

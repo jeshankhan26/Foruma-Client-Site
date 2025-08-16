@@ -8,7 +8,7 @@ const AnnouncementSection = () => {
   useEffect(() => {
     const fetchAnnouncements = async () => {
       try {
-        const res = await axios.get('https://foruma-server-site.vercel.app/announcements');
+        const res = await axios.get('http://localhost:3000/announcements');
         if (Array.isArray(res.data)) {
           const activeAnnouncements = res.data.filter(a => a.status === 1);
           setAnnouncements(activeAnnouncements);

@@ -25,7 +25,7 @@ export default function Login() {
       const token = await user.getIdToken();
 
       const roleResponse = await axios.post(
-        "https://foruma-server-site.vercel.app/check-role",
+        "http://localhost:3000/check-role",
         {},
         {
           headers: {
@@ -68,7 +68,7 @@ export default function Login() {
       const token = await user.getIdToken();
 
       const roleResponse = await axios.post(
-        "https://foruma-server-site.vercel.app/check-role",
+        "http://localhost:3000/check-role",
         {},
         {
           headers: {

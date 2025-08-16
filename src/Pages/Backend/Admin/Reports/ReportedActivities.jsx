@@ -12,14 +12,14 @@ const ReportedActivities = () => {
   const [modalComment, setModalComment] = useState(null);
 
   useEffect(() => {
-    axios.get("https://foruma-server-site.vercel.app/posts")
+    axios.get("http://localhost:3000/posts")
       .then(res => setPosts(res.data))
       .catch(console.error);
   }, []);
 
   const fetchComments = async (postId) => {
     try {
-      const res = await axios.get(`https://foruma-server-site.vercel.app/comments/${postId}`);
+      const res = await axios.get(`http://localhost:3000/comments/${postId}`);
       setComments(res.data);
       setSelectedPost(postId);
     } catch (err) {
@@ -41,7 +41,7 @@ const ReportedActivities = () => {
     if (!result.isConfirmed) return;
 
     try {
-      const res = await axios.delete(`https://foruma-server-site.vercel.app/comments/${commentId}`);
+      const res = await axios.delete(`http://localhost:3000/comments/${commentId}`);
       if (res.data?.deletedCount > 0) {
         setComments(prev => prev.filter(c => c._id !== commentId));
         Swal.fire("Deleted!", "Comment has been deleted.", "success");

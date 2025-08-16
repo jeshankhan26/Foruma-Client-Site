@@ -17,7 +17,7 @@ const CommentsPage = () => {
   // 🔄 Fetch all report records
   const fetchReportedComments = async () => {
     try {
-      const res = await axios.get("https://foruma-server-site.vercel.app/reportdata");
+      const res = await axios.get("http://localhost:3000/reportdata");
       return res.data; // Return full report objects
     } catch (error) {
       console.error("Failed to fetch reported data", error);
@@ -28,7 +28,7 @@ const CommentsPage = () => {
   // 🔄 Fetch comments + merge with report status
   const fetchComments = async () => {
     try {
-      const commentsRes = await axios.get(`https://foruma-server-site.vercel.app/comments/${postId}`);
+      const commentsRes = await axios.get(`http://localhost:3000/comments/${postId}`);
       const commentsData = commentsRes.data;
 
       const reports = await fetchReportedComments(); // Full reports
@@ -69,7 +69,7 @@ const CommentsPage = () => {
         feedback: comment.feedback,
       };
 
-      const response = await axios.post("https://foruma-server-site.vercel.app/report", payload);
+      const response = await axios.post("http://localhost:3000/report", payload);
 
       if (response.data.success) {
         Swal.fire("Reported!", "This comment has been reported successfully.", "success");

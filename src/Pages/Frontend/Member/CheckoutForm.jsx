@@ -20,7 +20,7 @@ const CheckoutForm = () => {
 
     try {
       // 🔄 1. Create PaymentIntent on server
-      const response = await axios.post("https://foruma-server-site.vercel.app/create-payment-intent", {
+      const response = await axios.post("http://localhost:3000/create-payment-intent", {
         amount: 500, // $5.00 in cents
         userEmail: user?.email,
       });

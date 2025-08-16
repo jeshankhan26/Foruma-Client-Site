@@ -16,7 +16,7 @@ const AllPost = () => {
     setLoading(true);
     try {
       const token = await user.getIdToken();
-      const res = await axios.get("https://foruma-server-site.vercel.app/mypost", {
+      const res = await axios.get("http://localhost:3000/mypost", {
         headers: { Authorization: `Bearer ${token}` },
       });
       setPosts(res.data);
@@ -39,7 +39,7 @@ const AllPost = () => {
     if (!confirm.isConfirmed) return;
 
     const token = await user.getIdToken();
-    await axios.delete(`https://foruma-server-site.vercel.app/posts/${id}`, {
+    await axios.delete(`http://localhost:3000/posts/${id}`, {
       headers: { Authorization: `Bearer ${token}` },
     });
 

@@ -18,7 +18,7 @@ const PostComments = ({ postId }) => {
   const [modalData, setModalData] = useState(null);
 
   useEffect(() => {
-    axios.get(`https://foruma-server-site.vercel.app/posts/${postId}/comments`)
+    axios.get(`http://localhost:3000/posts/${postId}/comments`)
       .then(res => setComments(res.data))
       .catch(console.error);
   }, [postId]);
@@ -31,7 +31,7 @@ const PostComments = ({ postId }) => {
     const feedback = selectedFeedback[commentId];
     if (!feedback) return;
 
-    axios.post(`https://foruma-server-site.vercel.app/api/reports`, {
+    axios.post(`http://localhost:3000/api/reports`, {
       commentId,
       feedback
     }).then(() => {

@@ -26,6 +26,8 @@ import CreateAnnouncement from "../Pages/Backend/Admin/Annoucement/CreateAnnounc
 import PostComments from "../Pages/Backend/Admin/Reports/PostComments";
 import ReportedActivities from "../Pages/Backend/Admin/Reports/ReportedActivities";
 import AnnouncementActivities from "../Pages/Backend/Admin/Annoucement/AnnouncementActivities";
+import Discussion from "../Pages/Frontend/Discussion";
+import Announcement from "../Pages/Frontend/Announcement";
 
 export const router = createBrowserRouter([
   {
@@ -35,7 +37,9 @@ export const router = createBrowserRouter([
       {index:true,element:<Home></Home>},
       {path:"member",element:<PrivateRoute>
         <Membership></Membership>
-      </PrivateRoute>}
+      </PrivateRoute>},
+      {path:"/announcement",element:<Announcement></Announcement>},
+      {path:"/discussion",element:<Discussion></Discussion>},
     ]
   },
   {

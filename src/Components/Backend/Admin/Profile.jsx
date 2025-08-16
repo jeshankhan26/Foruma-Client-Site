@@ -5,7 +5,7 @@ const Profile = () => {
   const [profile, setProfile] = useState([]);
 
   useEffect(() => {
-    axios.get('https://foruma-server-site.vercel.app/adduser')
+    axios.get('http://localhost:3000/adduser')
       .then(res => {
         setProfile(res.data); // Assuming res.data is an array
       })

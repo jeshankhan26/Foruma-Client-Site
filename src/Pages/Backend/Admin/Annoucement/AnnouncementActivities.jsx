@@ -8,7 +8,7 @@ const AnnouncementActivities = () => {
   // Fetch announcements from the server
   const fetchAnnouncements = async () => {
     try {
-      const res = await axios.get("https://foruma-server-site.vercel.app/announcements");
+      const res = await axios.get("http://localhost:3000/announcements");
       setAnnouncements(res.data);
     } catch (err) {
       console.error(err);
@@ -19,7 +19,7 @@ const AnnouncementActivities = () => {
   // Handle status update (toggle between Active and Inactive)
   const handleStatusUpdate = async (id, newStatus) => {
     try {
-      await axios.patch(`https://foruma-server-site.vercel.app/api/announcements/${id}`, {
+      await axios.patch(`http://localhost:3000/api/announcements/${id}`, {
         status: newStatus,
       });
       Swal.fire("Updated", "Status updated successfully", "success");

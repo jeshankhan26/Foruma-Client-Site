@@ -22,7 +22,7 @@ const AddTag = () => {
     };
 
     try {
-      const response = await axios.post("https://foruma-server-site.vercel.app/tags", newTag);
+      const response = await axios.post("http://localhost:3000/tags", newTag);
 
 if (response.status === 200 || response.status === 201) {
   Swal.fire("Success", "Tag added successfully!", "success").then(() => {

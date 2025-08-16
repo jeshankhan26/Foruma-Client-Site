@@ -88,7 +88,7 @@ const Register = () => {
         photoURL: uploadedImageUrl,
       });
 
-      const response = await fetch("https://foruma-server-site.vercel.app/adduser", {
+      const response = await fetch("http://localhost:3000/adduser", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({
@@ -104,7 +104,7 @@ const Register = () => {
       if (data.insertedId) {
         const token = await user.getIdToken();
         await axios.post(
-          "https://foruma-server-site.vercel.app/api/membership",
+          "http://localhost:3000/api/membership",
           {},
           { headers: { Authorization: `Bearer ${token}` } }
         );
@@ -135,7 +135,7 @@ const Register = () => {
       const result = await signInWithPopup(auth, googleProvider);
       const user = result.user;
 
-      const saveRes = await fetch("https://foruma-server-site.vercel.app/adduser", {
+      const saveRes = await fetch("http://localhost:3000/adduser", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({
@@ -150,7 +150,7 @@ const Register = () => {
 
       const token = await user.getIdToken();
       await axios.post(
-        "https://foruma-server-site.vercel.app/api/membership",
+        "http://localhost:3000/api/membership",
         {},
         { headers: { Authorization: `Bearer ${token}` } }
       );

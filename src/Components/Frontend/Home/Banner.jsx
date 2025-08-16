@@ -12,7 +12,7 @@ const Banner = () => {
     if (!search.trim()) return;
 
     try {
-      const res = await axios.get(`https://foruma-server-site.vercel.app/search-posts?tag=${search.trim()}`);
+      const res = await axios.get(`http://localhost:3000/search-posts?tag=${search.trim()}`);
       setResults(res.data);
     } catch (err) {
       console.error("Search failed", err);

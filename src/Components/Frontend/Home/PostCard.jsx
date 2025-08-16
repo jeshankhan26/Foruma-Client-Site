@@ -17,7 +17,7 @@ const PostCard = () => {
 
   useEffect(() => {
     setLoadingPosts(true);
-    fetch("https://foruma-server-site.vercel.app/posts")
+    fetch("http://localhost:3000/posts")
       .then((res) => {
         if (!res.ok) throw new Error("Failed to fetch posts");
         return res.json();
@@ -38,7 +38,7 @@ const PostCard = () => {
 
   const fetchComments = (postTitle) => {
     setLoadingComments((prev) => ({ ...prev, [postTitle]: true }));
-    fetch(`https://foruma-server-site.vercel.app/comments?postTitle=${encodeURIComponent(postTitle)}`)
+    fetch(`http://localhost:3000/comments?postTitle=${encodeURIComponent(postTitle)}`)
       .then((res) => res.json())
       .then((data) => {
         setCommentsMap((prev) => ({ ...prev, [postTitle]: data }));
@@ -74,7 +74,7 @@ const PostCard = () => {
     const userName = user.displayName;
     const userEmail = user.email;
 
-    fetch("https://foruma-server-site.vercel.app/comments", {
+    fetch("http://localhost:3000/comments", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({ postId, postTitle, userName, userEmail, commentText }),
@@ -93,7 +93,7 @@ const PostCard = () => {
 
   const handleUpvote = async (postId) => {
     try {
-      const res = await fetch(`https://foruma-server-site.vercel.app/posts/${postId}/upvote`, {
+      const res = await fetch(`http://localhost:3000/posts/${postId}/upvote`, {
         method: "PATCH",
       });
       const data = await res.json();
@@ -115,7 +115,7 @@ const PostCard = () => {
 
   const handleDownvote = async (postId) => {
     try {
-      const res = await fetch(`https://foruma-server-site.vercel.app/posts/${postId}/downvote`, {
+      const res = await fetch(`http://localhost:3000/posts/${postId}/downvote`, {
         method: "PATCH",
       });
       const data = await res.json();

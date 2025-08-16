@@ -20,7 +20,7 @@ const fetchTags = async (search = "") => {
   try {
 
     // Add timestamp to avoid cached API results
-    const res = await axios.get("https://foruma-server-site.vercel.app/alltags", {
+    const res = await axios.get("http://localhost:3000/alltags", {
       headers: { Authorization: `Bearer ${user.accessToken}` },
       params: { search, _ts: Date.now() },
     });
@@ -74,7 +74,7 @@ const fetchTags = async (search = "") => {
     try {
       const token = await user.getIdToken();
       await axios.patch(
-        `https://foruma-server-site.vercel.app/tags/${id}`,
+        `http://localhost:3000/tags/${id}`,
         { tag: newTag },
         { headers: { Authorization: `Bearer ${token}` } }
       );
@@ -101,7 +101,7 @@ const fetchTags = async (search = "") => {
 
     try {
       const token = await user.getIdToken();
-      await axios.delete(`https://foruma-server-site.vercel.app/tags/${id}`, {
+      await axios.delete(`http://localhost:3000/tags/${id}`, {
         headers: { Authorization: `Bearer ${token}` },
       });
       Swal.fire("Deleted!", "Tag has been deleted.", "success");
